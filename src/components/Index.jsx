@@ -27,7 +27,7 @@ const Index = () => {
               {post.postText}
             </div>
             <div className="nameAndDeleteButton">
-              <h3>{post.postTime}</h3>
+              <h3>{post.postTimeToString}</h3>
             </div>
           </div>
         );

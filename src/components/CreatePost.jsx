@@ -8,15 +8,17 @@ const CreatePost = ({ isAuth }) => {
   const [language, setLanguage] = useState();
   const [postText, setPostText] = useState();
   const [postTime, setPostTime] = useState();
+  const [postTimeToString, setPostTimeToString] = useState();
 
   const navigate = useNavigate();
 
   //Firebaseに投稿している
   const createPost = async () => {
     await addDoc(collection(db, "posts"), {
-      language: language || null,
+      language: language,
       postText: postText,
       postTime: postTime,
+      postTimeToString: postTimeToString,
       author: {
         username: auth.currentUser.displayName,
         id: auth.currentUser.uid
@@ -29,7 +31,8 @@ const CreatePost = ({ isAuth }) => {
   useEffect(() => {
     const now = new Date();
     const time = `${now.getMonth() + 1}月${now.getDate()}日 ${now.getHours()}時${now.getMinutes()}分`;
-    setPostTime(time);
+    setPostTime(now);
+    setPostTimeToString(time);
   }, [])
 
   //認証されているかどうかのチェック
@@ -45,12 +48,13 @@ const CreatePost = ({ isAuth }) => {
     <div className="createPostPage">
       <div className="postContainer">
         <h1>投稿する</h1>
-        <p>{postTime}</p>
+        <p>{postTimeToString}</p>
         <div className="inputPost">
           <select id="language-select" onChange={selectLanguage}>
             <option value="">言語を選択してください</option>
             <option value="React">React</option>
             <option value="Java">Java</option>
+            <option value="Others">その他</option>
           </select>
         </div>
         <div className="inputPost">

@@ -14,6 +14,7 @@ const Home = () => {
       setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     }
     getPosts();
+    console.log(postList);
   }, []);
 
   const handleDelete = async (id) => {
@@ -46,7 +47,7 @@ const Home = () => {
                 {post.postText}
               </div>
               <div className="nameAndDeleteButton">
-                <h3>{post.postTime}</h3>
+                <h3>{post.postTimeToString}</h3>
                 {post.author.id === auth.currentUser?.uid && (<button onClick={() => handleDelete(post.id)}>削除</button>)}
               </div>
             </div>
@@ -65,7 +66,7 @@ const Home = () => {
                 {post.postText}
               </div>
               <div className="nameAndDeleteButton">
-                <h3>{post.postTime}</h3>
+                <h3>{post.postTimeToString}</h3>
                 {post.author.id === auth.currentUser?.uid && (<button onClick={() => handleDelete(post.id)}>削除</button>)}
               </div>
             </div>
