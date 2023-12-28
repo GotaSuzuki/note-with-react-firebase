@@ -13,6 +13,7 @@ const CreatePost = ({ isAuth }) => {
   const navigate = useNavigate();
 
   //Firebaseに投稿している
+  //本来はpostTimeからToStringを作った方が良い、DBの節約になるから、どうすれば良いのだろう
   const createPost = async () => {
     await addDoc(collection(db, "posts"), {
       language: language,
