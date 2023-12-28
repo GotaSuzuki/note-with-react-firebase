@@ -6,6 +6,7 @@ import './Index.css'
 const Index = () => {
   const [postList, setPostList] = useState([]);
 
+  //Firebaseから投稿した直近の3件のデータを取得
   useEffect(() => {
     const getPosts = async () => {
       const data = await getDocs(query(collection(db, "posts"), orderBy("postTime", "desc"), limit(3)));

@@ -11,6 +11,7 @@ const CreatePost = ({ isAuth }) => {
 
   const navigate = useNavigate();
 
+  //Firebaseに投稿している
   const createPost = async () => {
     await addDoc(collection(db, "posts"), {
       language: language || null,
@@ -24,12 +25,14 @@ const CreatePost = ({ isAuth }) => {
     navigate('/Home');
   };
 
+  //投稿の時間をゲットするため
   useEffect(() => {
     const now = new Date();
     const time = `${now.getMonth() + 1}月${now.getDate()}日 ${now.getHours()}時${now.getMinutes()}分`;
     setPostTime(time);
   }, [])
 
+  //認証されているかどうかのチェック
   useEffect(() => {
     if (!isAuth) {
       navigate('/login');

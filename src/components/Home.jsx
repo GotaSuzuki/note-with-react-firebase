@@ -7,6 +7,7 @@ const Home = () => {
   const [postList, setPostList] = useState([]);
   const [selectLanguage, setSelectLanguage] = useState("All");
 
+  //Firebaseからデータを降順で取得している
   useEffect(() => {
     const getPosts = async () => {
       const data = await getDocs(query(collection(db, "posts"), orderBy("postTime", "desc")));
@@ -33,6 +34,7 @@ const Home = () => {
           <option value="Others">その他</option>
         </select>
       </div>
+      {/* 全てを表示させるか言語別に表示させるかを三項演算子で表現している */}
       {selectLanguage === "All" ?
         postList.map((post) => {
           return (
