@@ -44,7 +44,12 @@ const Home = () => {
                 <h2>{post.language}</h2>
               </div>
               <div className="postTextContainer">
+                <h3>学んだこと</h3>
                 {post.postText}
+              </div>
+              <div className="postTextContainer">
+                <h3>疑問点</h3>
+                {post.postQuestion}
               </div>
               <div className="nameAndDeleteButton">
                 <h3>{post.postTimeToString}</h3>
@@ -64,6 +69,9 @@ const Home = () => {
               </div>
               <div className="postTextContainer">
                 {post.postText}
+              </div>
+              <div className="postTextContainer">
+                {post.postQuestion}
               </div>
               <div className="nameAndDeleteButton">
                 <h3>{post.postTimeToString}</h3>
